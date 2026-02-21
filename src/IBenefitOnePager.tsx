@@ -69,8 +69,8 @@ export default function IBenefitOnePager() {
     <div className="page">
       <div className="navPills" role="navigation" aria-label="Section navigation">
         <button className={`pill ${active === "home" ? "pillActive" : ""}`} onClick={() => scrollTo("home")}>Home</button>
-        <button className={`pill ${active === "bio" ? "pillActive" : ""}`} onClick={() => scrollTo("bio")}>Bio</button>
-        <button className={`pill ${active === "about" ? "pillActive" : ""}`} onClick={() => scrollTo("about")}>About</button>
+        <button className={`pill ${active === "bio" ? "pillActive" : ""}`} onClick={() => scrollTo("bio")}>Mission</button>
+        <button className={`pill ${active === "about" ? "pillActive" : ""}`} onClick={() => scrollTo("about")}>About Us</button>
         <button className={`pill ${active === "contact" ? "pillActive" : ""}`} onClick={() => scrollTo("contact")}>Contact</button>
       </div>
 
@@ -150,7 +150,7 @@ export default function IBenefitOnePager() {
           className="panel panelContact"
         >
           <div className="textBlock animateIn">
-            <h2>Contact</h2>
+            <h2>Stay Tuned</h2>
             <p className="muted">Leave your details and we'll get in touch with you.</p>
 
             <form className="joinForm" onSubmit={handleSubmit}>
