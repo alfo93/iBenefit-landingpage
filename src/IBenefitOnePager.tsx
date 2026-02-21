@@ -92,23 +92,27 @@ export default function IBenefitOnePager() {
         <section id="bio" ref={(el) => { refs.current.bio = el; }} className="panel panelBio">
           <div className="bioContent animateIn">
             <h2>Mission</h2>
-            <p>IBenefit is the world's first vertical marketplace for biohacking, longevity, and performance optimization.</p>
-            <p>We curate the best protocols, hi-tech tools, and IBenefit Coaches to help athletes, entrepreneurs, and organizations live and perform at their peak.</p>
+            <p>The human body is capable of far more than most of us ever experience. The problem isn't potential — it's the lack of the right tools, knowledge, and support to unlock it.</p>
+            <p>IBenefit is built to change that. We combine scientific research, biohacking strategies, and personalized coaching to help individuals and organizations take control of their health — not just reactively, but proactively.
+                We track, we measure, we optimize. From nutrition and recovery to mental performance and longevity, we cover every dimension of what it means to feel and function at your peak.</p>
             <p className="muted"><em>Because living longer isn't enough. It's time to live better.</em></p>
           </div>
         </section>
 
         {/* 3) About */}
+        
         <section
           id="about"
           ref={(el) => { refs.current.about = el; }}
           className="panel panelAbout"
         >
+          <h1>About Us</h1>
           <div className="panelInner">
+            
             <div className="contactGrid animateIn">
               <div className="contactCard">
-                <h2>About Us</h2>
-                <p className="muted">Get in touch with us.</p>
+                <h2>IBenefit</h2>
+                <p className="muted"><em>The best investment you can make is in yourself.</em></p>
               </div>
 
               <a className="contactCard linkCard" href="mailto:ibenefit.customercare@outlook.com">
