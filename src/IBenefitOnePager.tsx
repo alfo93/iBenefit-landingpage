@@ -87,11 +87,15 @@ export default function IBenefitOnePager() {
             <div className="content contentBio">
                 <h2 className="title">Bio</h2>
                 <p className="lead">
-                IBenefit helps you build a better body and sharper mind using a practical, measurable approach.
+                IBenefit is the world's first vertical marketplace dedicated to those who want to live with intention, physical power, and mental clarity.
+                In a world where healthcare systems are increasingly reactive and fragmented, we take a different approach — one that is proactive, data-driven, and deeply personal. We curate the best protocols, hi-tech tools, and scientifically validated biohacking strategies to help you monitor, optimize, and take full control of your health.
+                We train IBenefit Coaches — highly qualified professionals who guide athletes, entrepreneurs, and organizations toward a high-performance lifestyle, where wellbeing, productivity, and longevity reinforce each other.
+                Our ecosystem brings together technology, AI, and human expertise to anticipate risks, elevate energy, and redefine what it means to feel your best — not just longer, but better. Every single day.
+                Because living longer isn't enough. It's time to live better. Starting now. For good.
                 </p>
-                <p className="muted">
+                {/* <p className="muted">
                 Training • Recovery • Nutrition • Habits
-                </p>
+                </p> */}
             </div>
         </section>
 
@@ -120,9 +124,9 @@ export default function IBenefitOnePager() {
                 <div className="value">+39 340 624 9133</div>
               </a>
 
-              <a className="contactCard linkCard" href="#" onClick={(e) => e.preventDefault()}>
+              <a className="contactCard linkCard" href="https://www.instagram.com/ibenefit_official/" onClick={(e) => e.preventDefault()}>
                 <div className="label">Instagram</div>
-                <div className="value">@ibenefit</div>
+                <div className="value">@ibenefit_official</div>
               </a>
 
               <a className="contactCard linkCard" href="#" onClick={(e) => e.preventDefault()}>
