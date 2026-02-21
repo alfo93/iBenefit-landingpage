@@ -17,7 +17,7 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
 }
 
 .snap{
-  height: 100dvh;              /* modern dynamic viewport */
+  height: 100dvh;
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
@@ -27,47 +27,16 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   -webkit-overflow-scrolling: touch;
 }
 
-.bioContent {
-  width: min(640px, 90%);
-  text-align: center;
-}
-
-.bioContent h2 {
-  font-size: clamp(24px, 4vw, 36px);
-  margin: 0 0 20px;
-}
-
-.bioContent p {
-  font-size: clamp(15px, 2vw, 18px);
-  line-height: 1.7;
-  margin: 0 0 14px;
-  color: var(--text);
-}
-
-.panelBio {
-  background: radial-gradient(900px 600px at 60% 30%, rgba(255,255,255,.07), transparent 60%),
-              linear-gradient(180deg, #0b0f17, #090b12);
-}
-
-.panelAbout {
-  background: radial-gradient(900px 700px at 40% 25%, rgba(255,122,26,.10), transparent 60%),
-              linear-gradient(180deg, #12051f, #0b0f17);
-}
-
-.panelContact {
-  background: radial-gradient(900px 600px at 50% 40%, rgba(255,122,26,.08), transparent 60%),
-              linear-gradient(180deg, #090b12, #0b0f17);
-}
-
+/* ── Panels ── */
 .panel{
   height: 100dvh;
   min-height: 100dvh;
   width: 100vw;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
   display: grid;
   place-items: center;
-
   padding:
     max(16px, env(safe-area-inset-top))
     max(16px, env(safe-area-inset-right))
@@ -79,9 +48,9 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  transform: translateZ(0);
 }
 
-/* Theme panels */
 .panelHome{
   background: radial-gradient(900px 600px at 50% 20%, rgba(255,122,26,.18), transparent 55%),
               radial-gradient(900px 700px at 30% 80%, rgba(255,255,255,.06), transparent 55%),
@@ -97,12 +66,17 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
               linear-gradient(180deg, #0b0f17, #090b12);
 }
 
-.panelContact{
+.panelAbout{
   background: radial-gradient(900px 700px at 40% 25%, rgba(255,122,26,.10), transparent 60%),
               linear-gradient(180deg, #12051f, #0b0f17);
 }
 
-/* Floating minimal nav */
+.panelContact{
+  background: radial-gradient(900px 600px at 50% 40%, rgba(255,122,26,.08), transparent 60%),
+              linear-gradient(180deg, #090b12, #0b0f17);
+}
+
+/* ── Floating nav ── */
 .navPills{
   position: fixed;
   top: 14px;
@@ -133,7 +107,7 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   box-shadow: 0 0 0 3px rgba(255,122,26,.14);
 }
 
-/* Animations */
+/* ── Animations ── */
 .animateIn{
   animation: enter .65s ease-out both;
 }
@@ -142,57 +116,57 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   to{ opacity: 1; transform: translateY(0); }
 }
 
-/* Home hero */
-.heroCard{
-  width: min(820px, 100%);
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,.18);
-  border-radius: 24px;
-  padding: clamp(18px, 3vw, 34px);
-  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+/* ── Home hero ── */
+.heroFull{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
   text-align: center;
 }
 
-.logo{
-  width: min(720px, 92vw);
-  max-height: min(70dvh, 520px);
+.logoFull{
+  width: min(92vw, 1100px);
+  max-height: 78dvh;
   height: auto;
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+  filter: drop-shadow(0 24px 44px rgba(0,0,0,.45));
 }
 
-.panelInner{
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  transform: translateZ(0); /* smoother */
-}
-
-.panel{
-  scroll-snap-stop: always; /* makes snapping more decisive */
-}
-
-.textBlock, .contactCard, .heroCard{
-  padding: clamp(16px, 3vw, 34px);
-  border-radius: clamp(18px, 3vw, 28px);
-}
-
-.subline{
-  margin-top: 10px;
+.heroTagline{
+  margin-top: 14px;
   letter-spacing: .22em;
-  font-size: clamp(11px, 1.5vw, 13px);
-  color: var(--muted);
+  font-size: clamp(11px, 1.6vw, 14px);
+  color: rgba(255,255,255,.72);
 }
 
-.hint{
-  margin-top: 18px;
+.heroHint{
+  margin-top: 12px;
   font-size: 13px;
-  color: rgba(255,255,255,.70);
+  color: rgba(255,255,255,.60);
 }
 
-/* Bio */
+/* ── Bio ── */
+.bioContent {
+  width: min(640px, 90%);
+  text-align: center;
+}
+
+.bioContent h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  margin: 0 0 20px;
+}
+
+.bioContent p {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+  margin: 0 0 14px;
+  color: var(--text);
+}
+
+/* ── Text block (Contact form) ── */
 .textBlock{
   width: min(760px, 100%);
   border: 1px solid var(--border);
@@ -205,23 +179,21 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   margin: 0 0 10px;
   font-size: clamp(20px, 3vw, 28px);
 }
+
 .textBlock p{
   margin: 0 0 12px;
   line-height: 1.65;
   font-size: clamp(14px, 2vw, 16px);
   color: var(--text);
 }
+
 .muted{ color: var(--muted); }
 
-/* Contacts */
+/* ── About grid ── */
 .contactGrid{
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-@media (max-width: 720px){
-  .contactGrid{ grid-template-columns: 1fr; }
-  .navPills{ top: 10px; }
 }
 
 .contactCard{
@@ -248,60 +220,12 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
 .value{
   font-size: clamp(14px, 2vw, 16px);
 }
 
-.footer{
-  position: absolute;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255,255,255,.55);
-}
-
-.heroFull{
-  height: 100%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  text-align: center;
-}
-
-/* Make logo as big as possible without overflowing */
-.logoFull{
-  width: min(92vw, 1100px);
-  max-height: 78dvh;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 24px 44px rgba(0,0,0,.45));
-}
-
-/* Minimal text */
-.heroTagline{
-  margin-top: 14px;
-  letter-spacing: .22em;
-  font-size: clamp(11px, 1.6vw, 14px);
-  color: rgba(255,255,255,.72);
-}
-
-.heroHint{
-  margin-top: 12px;
-  font-size: 13px;
-  color: rgba(255,255,255,.60);
-}
-
-/* rename panelBio → panelAbout */
-.panelAbout {
-  background: radial-gradient(900px 600px at 60% 30%, rgba(255,255,255,.07), transparent 60%),
-              linear-gradient(180deg, #0b0f17, #090b12);
-}
-
-/* Form styles */
+/* ── Form ── */
 .joinForm {
   display: flex;
   flex-direction: column;
@@ -313,9 +237,6 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-}
-@media (max-width: 520px) {
-  .formRow { grid-template-columns: 1fr; }
 }
 
 .formGroup {
@@ -366,6 +287,7 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   transform: translateY(-1px);
 }
 
+/* ── Phone input ── */
 .phoneInput {
   background: rgba(255,255,255,.06);
   border: 1px solid var(--border);
@@ -391,7 +313,6 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   color: rgba(255,255,255,.30);
 }
 
-/* Style the country select dropdown */
 .PhoneInputCountrySelect {
   background: transparent;
   border: none;
@@ -401,4 +322,44 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
 
 .PhoneInputCountrySelectArrow {
   color: var(--muted);
+}
+
+/* ── Footer ── */
+.footer{
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+}
+
+/* ── Misc ── */
+.subline{
+  margin-top: 10px;
+  letter-spacing: .22em;
+  font-size: clamp(11px, 1.5vw, 13px);
+  color: var(--muted);
+}
+
+.hint{
+  margin-top: 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,.70);
+}
+
+/* ── Media queries (must come AFTER base styles) ── */
+@media (max-width: 720px){
+  .contactGrid{ grid-template-columns: 1fr; }
+  .navPills{ top: 10px; }
+}
+
+@media (max-width: 520px){
+  .navPills{
+    display: none;
+  }
+  .formRow{
+    grid-template-columns: 1fr;
+  }
 }
