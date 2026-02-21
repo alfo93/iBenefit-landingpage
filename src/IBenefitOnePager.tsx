@@ -83,21 +83,26 @@ export default function IBenefitOnePager() {
         </section>
 
         {/* 2) Bio */}
-        <section id="bio" ref={(el) => { refs.current.bio = el; }} className="panel panelBio">
-            <div className="content contentBio">
-                <h2 className="title">Bio</h2>
-                <p className="lead">
-                IBenefit is the world's first vertical marketplace dedicated to those who want to live with intention, physical power, and mental clarity.
-                In a world where healthcare systems are increasingly reactive and fragmented, we take a different approach — one that is proactive, data-driven, and deeply personal. We curate the best protocols, hi-tech tools, and scientifically validated biohacking strategies to help you monitor, optimize, and take full control of your health.
-                We train IBenefit Coaches — highly qualified professionals who guide athletes, entrepreneurs, and organizations toward a high-performance lifestyle, where wellbeing, productivity, and longevity reinforce each other.
-                Our ecosystem brings together technology, AI, and human expertise to anticipate risks, elevate energy, and redefine what it means to feel your best — not just longer, but better. Every single day.
-                Because living longer isn't enough. It's time to live better. Starting now. For good.
-                </p>
-                {/* <p className="muted">
-                Training • Recovery • Nutrition • Habits
-                </p> */}
-            </div>
-        </section>
+       <section id="bio" ref={(el) => { refs.current.bio = el; }} className="panel panelBio">
+        <div className="textBlock animateIn">
+          <h2 className="title">Bio</h2>
+          <p className="lead">
+            IBenefit is the world's first vertical marketplace dedicated to those who want to live with intention, physical power, and mental clarity.
+          </p>
+          <p>
+            In a world where healthcare systems are increasingly reactive and fragmented, we take a different approach — one that is proactive, data-driven, and deeply personal. We curate the best protocols, hi-tech tools, and scientifically validated biohacking strategies to help you monitor, optimize, and take full control of your health.
+          </p>
+          <p>
+            We train <strong>IBenefit Coaches</strong> — highly qualified professionals who guide athletes, entrepreneurs, and organizations toward a high-performance lifestyle, where wellbeing, productivity, and longevity reinforce each other.
+          </p>
+          <p>
+            Our ecosystem brings together technology, AI, and human expertise to anticipate risks, elevate energy, and redefine what it means to feel your best.
+          </p>
+          <p className="muted">
+            <em>Because living longer isn't enough. It's time to live better. Starting now. For good.</em>
+          </p>
+        </div>
+      </section>
 
         {/* 3) Contacts */}
         <section
