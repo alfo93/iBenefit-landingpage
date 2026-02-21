@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import logo from "./assets/logo.png";
 import "./onepager.css";
 
@@ -70,7 +70,9 @@ export default function IBenefitOnePager() {
         {/* 1) Logo */}
         <section
             id="home"
-            ref={(el) => (refs.current.home = el)}
+            ref={(el) => {
+              refs.current.home = el;
+            }}
             className="panel panelHome"
             >
             <div className="heroFull">
@@ -81,7 +83,7 @@ export default function IBenefitOnePager() {
         </section>
 
         {/* 2) Bio */}
-        <section id="bio" ref={(el) => (refs.current.bio = el)} className="panel panelBio">
+        <section id="bio" ref={(el) => { refs.current.bio = el; }} className="panel panelBio">
             <div className="content contentBio">
                 <h2 className="title">Bio</h2>
                 <p className="lead">
