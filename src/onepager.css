@@ -27,6 +27,38 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   -webkit-overflow-scrolling: touch;
 }
 
+.bioContent {
+  width: min(640px, 90%);
+  text-align: center;
+}
+
+.bioContent h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  margin: 0 0 20px;
+}
+
+.bioContent p {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+  margin: 0 0 14px;
+  color: var(--text);
+}
+
+.panelBio {
+  background: radial-gradient(900px 600px at 60% 30%, rgba(255,255,255,.07), transparent 60%),
+              linear-gradient(180deg, #0b0f17, #090b12);
+}
+
+.panelAbout {
+  background: radial-gradient(900px 700px at 40% 25%, rgba(255,122,26,.10), transparent 60%),
+              linear-gradient(180deg, #12051f, #0b0f17);
+}
+
+.panelContact {
+  background: radial-gradient(900px 600px at 50% 40%, rgba(255,122,26,.08), transparent 60%),
+              linear-gradient(180deg, #090b12, #0b0f17);
+}
+
 .panel{
   height: 100dvh;
   min-height: 100dvh;
@@ -261,4 +293,112 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   margin-top: 12px;
   font-size: 13px;
   color: rgba(255,255,255,.60);
+}
+
+/* rename panelBio → panelAbout */
+.panelAbout {
+  background: radial-gradient(900px 600px at 60% 30%, rgba(255,255,255,.07), transparent 60%),
+              linear-gradient(180deg, #0b0f17, #090b12);
+}
+
+/* Form styles */
+.joinForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 520px) {
+  .formRow { grid-template-columns: 1fr; }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.formInput {
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+.formInput::placeholder { color: rgba(255,255,255,.30); }
+.formInput:focus {
+  border-color: rgba(255,122,26,.5);
+  background: rgba(255,255,255,.09);
+}
+
+.formBtn {
+  margin-top: 6px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: .04em;
+  transition: opacity .15s ease, transform .15s ease;
+  align-self: flex-start;
+}
+.formBtn:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+.phoneInput {
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phoneInput input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 15px;
+  width: 100%;
+}
+
+.phoneInput input::placeholder {
+  color: rgba(255,255,255,.30);
+}
+
+/* Style the country select dropdown */
+.PhoneInputCountrySelect {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.PhoneInputCountrySelectArrow {
+  color: var(--muted);
 }
