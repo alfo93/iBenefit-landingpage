@@ -110,14 +110,14 @@ export default function IBenefitOnePager() {
                 <p className="muted">Examples — replace with your real info.</p>
               </div>
 
-              <a className="contactCard linkCard" href="mailto:hello@ibenefit.com">
+              <a className="contactCard linkCard" href="mailto:ibenefit.customercare@outlook.com">
                 <div className="label">Email</div>
-                <div className="value">hello@ibenefit.com</div>
+                <div className="value">ibenefit.customercare@outlook.com</div>
               </a>
 
-              <a className="contactCard linkCard" href="tel:+390000000000">
+              <a className="contactCard linkCard" href="tel:+393406249133">
                 <div className="label">Phone</div>
-                <div className="value">+39 000 000 0000</div>
+                <div className="value">+39 340 624 9133</div>
               </a>
 
               <a className="contactCard linkCard" href="#" onClick={(e) => e.preventDefault()}>
