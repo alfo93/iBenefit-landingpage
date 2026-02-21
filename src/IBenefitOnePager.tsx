@@ -3,6 +3,7 @@ import logo from "./assets/logo.png";
 import "./onepager.css";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { supabase } from "./supabaseClient";
 
 type SectionId = "home" | "bio" | "about" | "contact";
 
@@ -39,7 +40,26 @@ function useActiveSection(ids: SectionId[]) {
 export default function IBenefitOnePager() {
   const ids = useMemo(() => ["home", "bio", "about", "contact"] as SectionId[], []);
   const { active, refs } = useActiveSection(ids);
-  const [phone, setPhone] = useState<string>("");
+
+  const [formData, setFormData] = useState({ name: "", surname: "", email: "", affiliation: "", phone: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    console.log("Submitting:", formData); // 👈 add this
+
+    const { data, error } = await supabase.from("leads").insert([formData]);
+
+    console.log("Response:", data, error); // 👈 add this
+    if (error) {
+      console.error(error);
+      setFormStatus("error");
+    } else {
+      setFormStatus("success");
+      setFormData({ name: "", surname: "", email: "", affiliation: "", phone: "" });
+    }
+  };
 
   const scrollTo = (id: SectionId) => {
     refs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -71,7 +91,7 @@ export default function IBenefitOnePager() {
         {/* 2) Bio */}
         <section id="bio" ref={(el) => { refs.current.bio = el; }} className="panel panelBio">
           <div className="bioContent animateIn">
-            <h2>Bio</h2>
+            <h2>Mission</h2>
             <p>IBenefit is the world's first vertical marketplace for biohacking, longevity, and performance optimization.</p>
             <p>We curate the best protocols, hi-tech tools, and IBenefit Coaches to help athletes, entrepreneurs, and organizations live and perform at their peak.</p>
             <p className="muted"><em>Because living longer isn't enough. It's time to live better.</em></p>
@@ -87,7 +107,7 @@ export default function IBenefitOnePager() {
           <div className="panelInner">
             <div className="contactGrid animateIn">
               <div className="contactCard">
-                <h2>About</h2>
+                <h2>About Us</h2>
                 <p className="muted">Get in touch with us.</p>
               </div>
 
@@ -129,41 +149,77 @@ export default function IBenefitOnePager() {
             <h2>Contact</h2>
             <p className="muted">Leave your details and we'll get in touch with you.</p>
 
-            <form className="joinForm" onSubmit={(e) => { e.preventDefault(); alert("Thank you! We'll be in touch soon."); }}>
-              <div className="formRow">
-                <div className="formGroup">
-                  <label className="formLabel">Name</label>
-                  <input className="formInput" type="text" placeholder="Mario" required />
-                </div>
-                <div className="formGroup">
-                  <label className="formLabel">Surname</label>
-                  <input className="formInput" type="text" placeholder="Rossi" required />
-                </div>
-              </div>
-
+            <form className="joinForm" onSubmit={handleSubmit}>
+            <div className="formRow">
               <div className="formGroup">
-                <label className="formLabel">Email</label>
-                <input className="formInput" type="email" placeholder="mario.rossi@email.com" required />
-              </div>
-
-              <div className="formGroup">
-                <label className="formLabel">Phone</label>
-                <PhoneInput
-                  className="phoneInput"
-                  placeholder="+39 340 624 9133"
-                  value={phone}
-                  onChange={(val) => setPhone(val ?? "")}
-                  defaultCountry="IT"
+                <label className="formLabel">Name</label>
+                <input
+                  className="formInput"
+                  type="text"
+                  placeholder="Mario"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
-
               <div className="formGroup">
-                <label className="formLabel">Affiliation</label>
-                <input className="formInput" type="text" placeholder="Company, university, or role..." />
+                <label className="formLabel">Surname</label>
+                <input
+                  className="formInput"
+                  type="text"
+                  placeholder="Rossi"
+                  required
+                  value={formData.surname}
+                  onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
+                />
               </div>
+            </div>
 
-              <button className="formBtn" type="submit">Send →</button>
-            </form>
+            <div className="formGroup">
+              <label className="formLabel">Email</label>
+              <input
+                className="formInput"
+                type="email"
+                placeholder="mario.rossi@email.com"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+
+            <div className="formGroup">
+              <label className="formLabel">Phone</label>
+              <PhoneInput
+                className="phoneInput"
+                placeholder="+39 340 624 9133"
+                value={formData.phone}
+                onChange={(val) => setFormData({ ...formData, phone: val ?? "" })}
+                defaultCountry="IT"
+              />
+            </div>
+
+            <div className="formGroup">
+              <label className="formLabel">Affiliation</label>
+              <input
+                className="formInput"
+                type="text"
+                placeholder="Company, university, or role..."
+                value={formData.affiliation}
+                onChange={(e) => setFormData({ ...formData, affiliation: e.target.value })}
+              />
+            </div>
+
+            {formStatus === "success" && (
+              <p style={{ color: "#4ade80" }}>✓ Thank you! We'll be in touch soon.</p>
+            )}
+            {formStatus === "error" && (
+              <p style={{ color: "#f87171" }}>Something went wrong. Please try again.</p>
+            )}
+
+            <button className="formBtn" type="submit" disabled={formStatus === "loading"}>
+              {formStatus === "loading" ? "Sending..." : "Send →"}
+            </button>
+          </form>
           </div>
 
           <footer className="footer">
