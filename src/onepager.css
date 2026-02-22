@@ -363,3 +363,18 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
     grid-template-columns: 1fr;
   }
 }
+
+.langSwitcher {
+  background: transparent;
+  border-color: rgba(255,255,255,.25);
+  font-size: 12px;
+  padding: 6px 10px;
+  margin-left: 30px;
+  border-left: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+}
+
+.langSwitcher:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.4);
+}
