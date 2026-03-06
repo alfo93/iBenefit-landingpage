@@ -92,6 +92,7 @@ export default function IBenefitOnePager() {
           <div className="heroFull">
             <img className="logoFull" src={logo} alt="IBENEFIT logo" />
             <div className="heroTagline">{t.hero.tagline}</div>
+            <div className="heroSub">{t.hero.sub}</div>
             <div className="heroHint">{t.hero.hint}</div>
           </div>
         </section>
@@ -106,6 +107,12 @@ export default function IBenefitOnePager() {
             <h2>{t.bio.title}</h2>
             <p>{t.bio.p1}</p>
             <p>{t.bio.p2}</p>
+            <div className="bioPillarsTitle">{t.bio.pillarsTitle}</div>
+            <div className="bioPillars">
+              {t.bio.pillars.map((pillar) => (
+                <span key={pillar} className="bioPillar">{pillar}</span>
+              ))}
+            </div>
             <p className="muted"><em>{t.bio.quote}</em></p>
           </div>
         </section>
@@ -118,8 +125,8 @@ export default function IBenefitOnePager() {
         >
           <div className="panelInner">
             <div className="contactGrid animateIn">
-              <div className="contactCard">
-                <h2>IBenefit</h2>
+              <div className="contactCard conceptCard">
+                <p className="aboutConcept">{t.about.concept}</p>
                 <p className="muted"><em>{t.about.quote}</em></p>
               </div>
 

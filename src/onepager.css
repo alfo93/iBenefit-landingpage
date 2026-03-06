@@ -142,6 +142,13 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   color: rgba(255,255,255,.72);
 }
 
+.heroSub{
+  margin-top: 10px;
+  font-size: clamp(12px, 1.6vw, 15px);
+  color: rgba(255,255,255,.60);
+  letter-spacing: .04em;
+}
+
 .heroHint{
   margin-top: 12px;
   font-size: 13px;
@@ -164,6 +171,45 @@ body { margin: 0; background: var(--bg2); color: var(--text); font-family: ui-sa
   line-height: 1.7;
   margin: 0 0 14px;
   color: var(--text);
+}
+
+/* ── Bio pillars ── */
+.bioPillarsTitle{
+  font-size: 12px;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 20px 0 10px;
+}
+
+.bioPillars{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.bioPillar{
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,122,26,.35);
+  background: rgba(255,122,26,.08);
+  color: var(--text);
+  letter-spacing: .02em;
+}
+
+/* ── About concept card ── */
+.conceptCard{
+  grid-column: 1 / -1;
+}
+
+.aboutConcept{
+  font-size: clamp(13px, 1.8vw, 15px);
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 10px;
 }
 
 /* ── Text block (Contact form) ── */
