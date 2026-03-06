@@ -6,13 +6,29 @@ import "react-phone-number-input/style.css";
 import { supabase } from "./supabaseClient";
 import { translations, type Lang } from "./translations";
 
-type SectionId = "home" | "bio" | "about" | "contact";
+type SectionId = "home" | "bio" | "team" | "about" | "contact";
+
+interface TeamMember {
+  initials: string;
+  name: string;
+  role: string;
+  img?: string;
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { initials: "AD", name: "Nome Cognome", role: "Founder & CEO" },
+  { initials: "HC", name: "Nome Cognome", role: "Head of Coaching" },
+  { initials: "AE", name: "Nome Cognome", role: "Co-Founder & CTO" },
+  { initials: "HN", name: "Nome Cognome", role: "Head of Nothing"  },
+  { initials: "HM", name: "Nome Cognome", role: "Head of Marketing" },
+];
 
 function useActiveSection(ids: SectionId[]) {
   const [active, setActive] = useState<SectionId>("home");
   const refs = useRef<Record<SectionId, HTMLElement | null>>({
     home: null,
     bio: null,
+    team: null,
     about: null,
     contact: null,
   });
@@ -39,7 +55,7 @@ function useActiveSection(ids: SectionId[]) {
 }
 
 export default function IBenefitOnePager() {
-  const ids = useMemo(() => ["home", "bio", "about", "contact"] as SectionId[], []);
+  const ids = useMemo(() => ["home", "bio", "team", "about", "contact"] as SectionId[], []);
   const { active, refs } = useActiveSection(ids);
 
   const [lang, setLang] = useState<Lang>("it");
@@ -72,6 +88,7 @@ export default function IBenefitOnePager() {
       <div className="navPills" role="navigation" aria-label="Section navigation">
         <button className={`pill ${active === "home" ? "pillActive" : ""}`} onClick={() => scrollTo("home")}>{t.nav.home}</button>
         <button className={`pill ${active === "bio" ? "pillActive" : ""}`} onClick={() => scrollTo("bio")}>{t.nav.bio}</button>
+        <button className={`pill ${active === "team" ? "pillActive" : ""}`} onClick={() => scrollTo("team")}>{t.nav.team}</button>
         <button className={`pill ${active === "about" ? "pillActive" : ""}`} onClick={() => scrollTo("about")}>{t.nav.about}</button>
         <button className={`pill ${active === "contact" ? "pillActive" : ""}`} onClick={() => scrollTo("contact")}>{t.nav.contact}</button>
         <button
@@ -117,7 +134,35 @@ export default function IBenefitOnePager() {
           </div>
         </section>
 
-        {/* 3) About */}
+        {/* 3) Team */}
+        <section
+          id="team"
+          ref={(el) => { refs.current.team = el; }}
+          className="panel panelTeam"
+        >
+          <div className="panelInner">
+            <div className="teamHeader animateIn">
+              <h2 className="teamTitle">{t.team.title}</h2>
+              <p className="teamSubtitle muted">{t.team.subtitle}</p>
+            </div>
+            <div className="teamGrid animateIn">
+              {TEAM_MEMBERS.map((member) => (
+                <div key={member.name + member.role} className="teamCard">
+                  <div className="teamAvatar">
+                    {member.img
+                      ? <img src={member.img} alt={member.name} className="teamAvatarImg" />
+                      : <span className="teamAvatarInitials">{member.initials}</span>
+                    }
+                  </div>
+                  <div className="teamName">{member.name}</div>
+                  <div className="teamRole">{member.role}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4) About */}
         <section
           id="about"
           ref={(el) => { refs.current.about = el; }}

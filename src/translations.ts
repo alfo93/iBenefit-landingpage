@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       home: "Home",
       bio: "Mission",
+      team: "Team",
       about: "About Us",
       contact: "Contact",
     },
@@ -22,6 +23,10 @@ export const translations = {
         "Corporate Wellness · B2B Programs",
       ],
       quote: "Because living longer isn't enough. It's time to live better. Now. Forever.",
+    },
+    team: {
+      title: "The Team",
+      subtitle: "The people behind the revolution.",
     },
     about: {
       title: "About Us",
@@ -50,6 +55,7 @@ export const translations = {
     nav: {
       home: "Home",
       bio: "Mission",
+      team: "Team",
       about: "Chi Siamo",
       contact: "Contatti",
     },
@@ -69,6 +75,10 @@ export const translations = {
         "Corporate Wellness · Programmi B2B",
       ],
       quote: "Perché non basta vivere più a lungo. È tempo di vivere meglio. Da subito. Per sempre.",
+    },
+    team: {
+      title: "Il Team",
+      subtitle: "Le persone dietro la rivoluzione.",
     },
     about: {
       title: "Chi Siamo",
